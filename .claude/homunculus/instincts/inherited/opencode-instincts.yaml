@@ -1,0 +1,352 @@
+# Instincts generated from https://github.com/bufanliu/opencode
+# Generated: 2026-03-20T15:50:38.988Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: opencode-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: fix, chore, refactor, feat, zen
+
+## Evidence
+
+- 200 commits analyzed
+- Detected conventional commit pattern
+- Examples: tweak: adjust codex plugin logic so that codex instruction isn't always added (oauth plan no longer enforces instruction whitelisting) (#18337), docs: add Cloudflare Workers AI provider (#18322)
+
+---
+id: opencode-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Commit Length
+
+## Action
+
+Keep commit messages concise (~47 characters)
+
+## Evidence
+
+- Average commit message length: 47 chars
+- Based on 200 commits
+
+---
+id: opencode-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: opencode-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: opencode-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: opencode-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: 
+
+---
+id: opencode-test-framework
+trigger: "when writing tests"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Test Framework
+
+## Action
+
+Use playwright as the test framework
+
+## Evidence
+
+- Test framework detected: playwright
+- File pattern: *.test.ts
+
+---
+id: opencode-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.ts
+
+## Evidence
+
+- File pattern: *.test.ts
+- Consistent across test files
+
+---
+id: opencode-test-types
+trigger: "when planning tests for a feature"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Test Types
+
+## Action
+
+Write unit, integration, e2e tests to match project standards
+
+## Evidence
+
+- Test types detected: unit, integration, e2e
+- Coverage config: yes
+
+---
+id: opencode-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: packages/opencode/src/filesystem/*, packages/opencode/src/skill/*, packages/opencode/src/snapshot/*
+
+---
+id: opencode-workflow-refactoring
+trigger: "when refactoring code"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Workflow Refactoring
+
+## Action
+
+Follow the refactoring workflow:
+1. Ensure tests pass before refactor
+2. Refactor code structure
+3. Verify tests still pass
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: src/**/*
+
+---
+id: opencode-workflow-update-nix-node-modules-hashes
+trigger: "when doing update nix node modules hashes"
+confidence: 0.8
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Workflow Update Nix Node Modules Hashes
+
+## Action
+
+Follow the update-nix-node-modules-hashes workflow:
+1. Update or regenerate nix/hashes.json
+2. Commit the updated hashes file
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~6x per month
+- Files: nix/hashes.json
+
+---
+id: opencode-workflow-generate-sdk-or-test-artifacts
+trigger: "when doing generate sdk or test artifacts"
+confidence: 0.75
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Workflow Generate Sdk Or Test Artifacts
+
+## Action
+
+Follow the generate-sdk-or-test-artifacts workflow:
+1. Run code generation scripts
+2. Commit generated files (e.g., sdk.gen.ts, types.gen.ts, openapi.json, or test files)
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~5x per month
+- Files: packages/sdk/js/src/v2/gen/sdk.gen.ts, packages/sdk/js/src/v2/gen/types.gen.ts, packages/sdk/openapi.json
+
+---
+id: opencode-workflow-add-or-update-i18n-translations
+trigger: "when doing add or update i18n translations"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Workflow Add Or Update I18n Translations
+
+## Action
+
+Follow the add-or-update-i18n-translations workflow:
+1. Edit or add translation files for each supported language
+2. Commit all updated translation files together
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: packages/app/src/i18n/ar.ts, packages/app/src/i18n/br.ts, packages/app/src/i18n/bs.ts
+
+---
+id: opencode-workflow-feature-or-bugfix-with-tests
+trigger: "when doing feature or bugfix with tests"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Workflow Feature Or Bugfix With Tests
+
+## Action
+
+Follow the feature-or-bugfix-with-tests workflow:
+1. Edit or add implementation files
+2. Edit or add test files in the corresponding test directory
+3. Commit both implementation and test changes together
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: packages/opencode/src/agent/agent.ts, packages/opencode/src/skill/skill.ts, packages/opencode/src/tool/task.ts
+
+---
+id: opencode-workflow-dependency-or-package-update
+trigger: "when doing dependency or package update"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/bufanliu/opencode
+---
+
+# Opencode Workflow Dependency Or Package Update
+
+## Action
+
+Follow the dependency-or-package-update workflow:
+1. Edit bun.lock and/or package.json files
+2. Edit or add patch files if needed
+3. Commit all related files together
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: bun.lock, package.json, packages/opencode/package.json
+
